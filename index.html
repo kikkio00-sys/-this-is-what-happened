@@ -111,12 +111,7 @@ main {
 .hotspot-timeline {right:2%;top:57%;width:13%;height:10%}
 .hotspot-research {right:2%;top:67%;width:13%;height:11%}
 .hotspot-archive {right:2%;top:78%;width:13%;height:11%}
-.mobile-museum-menu {
-  display:none;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:16px;
-}
+.mobile-museum-menu {display:none!important;}
 .mobile-museum-menu button {
   padding:16px;
   border:1px solid #9c7241;
@@ -155,9 +150,45 @@ main {
     aspect-ratio:1125/657;
     border-radius:12px;
   }
-  .museum-concept .hotspot {display:none}
-  .mobile-museum-menu {display:grid}
+  .museum-concept .hotspot {display:block}
+  .mobile-museum-menu {display:none}
   .panel {padding:18px}
+}
+
+
+.concept-cover{
+  position:absolute;z-index:4;bottom:2.5%;
+  display:grid;place-items:center;
+  min-width:15%;height:12%;
+  padding:6px 10px;
+  border:2px solid rgba(219,178,102,.72);
+  border-radius:18px;
+  color:#f4dfb8;
+  background:
+    linear-gradient(rgba(74,40,24,.96),rgba(45,24,15,.97)),
+    repeating-linear-gradient(90deg,#55321f 0 15px,#47291a 15px 30px);
+  box-shadow:0 6px 15px rgba(0,0,0,.4),inset 0 0 12px rgba(255,214,135,.08);
+  font-weight:bold;
+  text-align:center;
+}
+.concept-cover-left{left:5.5%}
+.concept-cover-right{right:4.5%;cursor:pointer}
+.concept-instruction{
+  margin:14px auto 0;
+  padding:10px 16px;
+  max-width:620px;
+  text-align:center;
+  font-style:italic;
+  border-top:1px solid #ad8757;
+  border-bottom:1px solid #ad8757;
+}
+@media(max-width:720px){
+  .concept-cover{font-size:.75rem;min-width:18%;height:13%;border-radius:12px}
+  .concept-cover-left{left:5%}
+  .concept-cover-right{right:4%}
+  .hotspot-thomas,.hotspot-gallery,.hotspot-timeline,.hotspot-research,.hotspot-archive{
+    min-width:44px;
+  }
 }
 
 </style>
@@ -200,18 +231,11 @@ main {
       <button class="hotspot hotspot-timeline go" data-go="timeline" aria-label="Open Timeline Hall">Timeline</button>
       <button class="hotspot hotspot-research go" data-go="research" aria-label="Open Research Center">Research Progress</button>
       <button class="hotspot hotspot-archive go" data-go="artifacts" aria-label="Open Archive">Archive</button>
+      <div class="concept-cover concept-cover-left">Family<br>Archive</div>
+      <button class="concept-cover concept-cover-right go" data-go="artifacts" aria-label="Open the family archive">Open<br>Archive</button>
     </div>
+    <p class="concept-instruction">Touch a family branch or one of the museum tabs to enter.</p>
 
-    <div class="mobile-museum-menu">
-      <button class="go" data-go="redwood"><strong>Living Redwood</strong><br><small>Start at the center</small></button>
-      <button class="go" data-go="living"><strong>Living Family</strong><br><small>Rachel, Bradley, Brody, Vance</small></button>
-      <button class="go" data-go="wings"><strong>Four Family Wings</strong><br><small>Zahner, Downing, Blackwell, Barrett</small></button>
-      <button data-room-target="thomas-room"><strong>Featured Exhibit</strong><br><small>Thomas Emory Blackwell</small></button>
-      <button class="go" data-go="gallery"><strong>Photos & Documents</strong><br><small>Family evidence gallery</small></button>
-      <button class="go" data-go="timeline"><strong>Timeline Hall</strong><br><small>Generations across time</small></button>
-      <button class="go" data-go="research"><strong>Research Progress</strong><br><small>What is known and missing</small></button>
-      <button class="go" data-go="artifacts"><strong>Archive</strong><br><small>Records, heirlooms, and stories</small></button>
-    </div>
   </article>
 </section>
 
