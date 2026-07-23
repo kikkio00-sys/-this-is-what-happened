@@ -1,0 +1,18 @@
+THIS IS WHAT HAPPENED — IPHONE GITHUB GUIDE
+
+FIRST UPLOAD
+1. In the iPhone Files app, tap the ZIP once to create a folder.
+2. Open the extracted folder.
+3. In Safari, open your GitHub repository.
+4. Tap Add file, then Upload files.
+5. Tap choose files and select the files from the extracted folder.
+6. Upload the HTML files, README.md, and the css, js, and images folders.
+7. Commit changes.
+
+IMPORTANT
+- index.html must remain at the top level.
+- Keep the css, js, and images folder names unchanged.
+- You may delete the old inbox.html after the new site works.
+
+FUTURE UPDATES
+Most updates will require replacing only one small file, such as js/museum.js or css/museum.css.
