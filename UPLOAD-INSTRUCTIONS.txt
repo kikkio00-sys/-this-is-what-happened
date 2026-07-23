@@ -1,0 +1,13 @@
+THIS IS WHAT HAPPENED — GITHUB UPLOAD PACKAGE
+
+This folder replaces the large single-file version.
+
+Upload every file in this folder to the top level of the GitHub repository:
+- index.html
+- styles.css
+- museum.js
+- all museum-image files
+
+The files must remain together with these exact names. GitHub Pages will open index.html automatically.
+
+The old inbox.html is no longer needed after the new files are uploaded successfully.
