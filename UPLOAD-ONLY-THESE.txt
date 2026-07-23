@@ -1,8 +1,4 @@
-MUSEUM v3.3 PHONE FIX
+UPLOAD EVERY FILE IN THIS FOLDER TO THE TOP LEVEL OF THE GITHUB REPOSITORY.
 
-Upload EVERY file in this folder to the main level of the GitHub repository.
-Do not create folders.
-
-Important: this release uses NEW filenames museum-v33.css and museum-v33.js so GitHub and Safari cannot keep using the older mismatched files.
-
-After upload, wait several minutes and reopen the public website.
+This is a flat iPhone-friendly release. Do not upload the ZIP itself.
+The new index.html points to museum-v42.css and museum-v42.js.

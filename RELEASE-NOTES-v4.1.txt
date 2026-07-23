@@ -1,0 +1,8 @@
+THIS IS WHAT HAPPENED — MUSEUM v4.1
+
+- Added a grand museum-interior hero image to the Entrance Hall
+- Added Curator Welcome and Museum Mission plaque
+- Restyled counters as clickable museum collection plaques
+- Restyled navigation as the Museum Directory
+- Kept the approved antique migration map and standardized route colors
+- Uses new museum-v41.css and museum-v41.js filenames to avoid Safari cache problems

@@ -1,0 +1,14 @@
+THIS IS WHAT HAPPENED — MUSEUM v4.2 COMPLETE
+
+Included:
+- iPhone safe-area header fix on every page
+- Larger, reliably tappable menu, search, and home controls
+- Grand Entrance Hall from v4.1
+- One-entry, multiple-display discovery system on this device
+- A discovery can connect automatically to Gallery, Archive, Research, a family collection, a person exhibit, timeline, and collection counters
+- Photo uploads up to 1.5 MB can be previewed and stored locally in the browser
+- Cleaner Family Tree exhibit with the repeated closing instruction removed
+- Gallery images use proportional scaling and no face-cropping on mobile
+
+IMPORTANT:
+This GitHub Pages release is a static website. Its discovery system currently stores contributions in the browser on the device where they were entered. A shared multi-user family database is the next backend phase required for contributions to appear across different phones and family members.
