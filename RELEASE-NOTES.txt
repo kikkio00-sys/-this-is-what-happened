@@ -1,0 +1,20 @@
+THIS IS WHAT HAPPENED — MUSEUM RELEASE 3.1
+
+Included in this release
+- Explore Every Generation family-tree room
+- Enlarged, cleaned family-tree artwork
+- Four family legend plaques
+- Curator's junk-drawer Add a Discovery experience
+- Shared CSS and JavaScript kept in separate folders
+- Small GitHub-friendly HTML pages
+
+GitHub upload
+1. Extract this ZIP in the iPhone Files app.
+2. Open the extracted folder.
+3. In the GitHub repository, choose Code > Upload file.
+4. Select all files and folders from inside this release folder.
+5. Commit directly to the main branch.
+6. Keep index.html at the repository root.
+7. Keep museum.css in css/, museum.js in js/, and images in images/.
+
+After the site is confirmed working, inbox.html and old museum-image files that are no longer referenced may be removed later. Do not delete them during this upload.
