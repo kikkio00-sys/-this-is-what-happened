@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2b1a12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Family Museum">
+<title>This Is What Happened — Family Museum</title>
+<style>
+:root{
+  --ink:#2f2118;--deep:#24150e;--wood:#5b3924;--wood-dark:#372116;
+  --paper:#f1e2bf;--paper-light:#fff8e8;--gold:#b78a48;--gold-dark:#8b643b;
+  --green:#4f6848;--rose:#7c4036;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif;
+  background:radial-gradient(circle at 12% 10%,rgba(255,255,255,.05),transparent 22%),
+             linear-gradient(135deg,#1b110c,#382217 45%,#1a100b);
+}
+button,input{font:inherit}
+.site-shell{max-width:1500px;min-height:100vh;margin:auto;background:rgba(241,226,191,.98);box-shadow:0 0 45px rgba(0,0,0,.8)}
+.museum-header{
+  position:sticky;top:0;z-index:20;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
+  padding:14px 18px;color:#f8edd8;text-align:center;
+  background:linear-gradient(90deg,var(--wood-dark),var(--wood),var(--wood-dark));
+  border-bottom:4px solid var(--gold)
+}
+.museum-header h1{margin:0;font-size:clamp(1.65rem,5vw,4rem);letter-spacing:.06em;text-transform:uppercase}
+.eyebrow{margin:0 0 .25rem;font-size:.77rem;letter-spacing:.18em;text-transform:uppercase}
+.eyebrow.dark{color:#795c36;font-weight:bold}
+.icon-button{
+  width:42px;height:42px;border-radius:50%;border:1px solid var(--gold);
+  background:rgba(255,255,255,.08);color:white;cursor:pointer;font-size:1.2rem
+}
+.header-actions{display:flex;gap:8px}
+.museum-layout{display:grid;grid-template-columns:255px 1fr;min-height:calc(100vh - 90px)}
+.museum-nav{
+  padding:14px 12px;color:#f6ead3;background:linear-gradient(#53321f,#2d1a11);
+  border-right:4px solid var(--gold)
+}
+.nav-link{
+  width:100%;margin:5px 0;padding:11px 12px;text-align:left;color:#f9edd8;
+  border:1px solid #b18955;border-radius:8px;background:rgba(255,255,255,.055);cursor:pointer;transition:.2s ease
+}
+.nav-link:hover,.nav-link.active{background:#8b633e;transform:translateX(2px)}
+.museum-main{min-width:0;padding:20px}
+.room{display:none;animation:fade .25s ease}
+.active-room{display:block}
+@keyframes fade{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:none}}
+.paper-panel{
+  padding:22px;border:1px solid #ad8959;border-radius:12px;
+  background:linear-gradient(rgba(255,250,236,.91),rgba(235,216,176,.92)),
+             repeating-linear-gradient(0deg,transparent 0 30px,rgba(71,45,25,.05) 31px);
+  box-shadow:inset 0 0 28px rgba(100,61,31,.14),0 8px 20px rgba(56,34,19,.14)
+}
+.paper-panel h2{margin:.1rem 0 1rem;font-size:clamp(1.8rem,4vw,3rem)}
+.paper-panel p{line-height:1.65}
+.lead{font-size:1.12rem}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.primary-button,.secondary-button{padding:11px 15px;border-radius:999px;cursor:pointer}
+.primary-button{border:1px solid #5e3c25;background:#6e472d;color:white}
+.secondary-button{border:1px solid #8c673d;background:#eee0c3;color:#3c2719}
+.museum-map{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.map-card{
+  min-height:130px;padding:14px;border:1px solid #b08a57;border-radius:10px;
+  background:#f4e6c7;color:var(--ink);cursor:pointer;box-shadow:0 5px 12px rgba(63,39,22,.11)
+}
+.map-card:hover{transform:translateY(-2px)}
+.map-card span,.map-card strong,.map-card small{display:block;margin-top:5px}
+.map-card span{font-size:1.7rem}
+.museum-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.museum-stats div{padding:14px;text-align:center;border:1px solid #b38b56;border-radius:9px;background:#efdfbf}
+.museum-stats strong{display:block;font-size:1.8rem}
+.redwood-wrap{display:grid;place-items:center;min-height:540px}
+.redwood-disc{
+  position:relative;width:min(80vw,540px);aspect-ratio:1;border:10px solid #4b2c1b;border-radius:50%;
+  background:repeating-radial-gradient(circle at center,#9d5f35 0 8%,#c78d58 8.5% 12%,#8f532f 12.5% 17%,#b87843 17.5% 23%,#7f482a 23.5% 29%,#ad6d3d 29.5% 36%,#744026 36.5% 43%,#9d5b33 43.5% 50%);
+  box-shadow:inset 0 0 32px rgba(37,21,13,.45),0 12px 24px rgba(0,0,0,.22)
+}
+.redwood-center{
+  position:absolute;inset:38%;display:grid;place-items:center;text-align:center;border:3px solid #d2a566;
+  border-radius:50%;background:#5f3824;color:#fff9e9;font-weight:bold;cursor:pointer
+}
+.branch{position:absolute;padding:5px 9px;border-radius:999px;background:rgba(244,225,185,.86);font-weight:bold}
+.branch-top{top:7%;left:50%;transform:translateX(-50%)}.branch-right{right:4%;top:48%}
+.branch-bottom{bottom:7%;left:50%;transform:translateX(-50%)}.branch-left{left:4%;top:48%}
+.person-grid,.artifact-grid,.research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.person-card,.artifact-card,.research-card{
+  padding:16px;border:1px solid #ad8755;border-radius:10px;background:#f2e3c3;
+  box-shadow:0 5px 12px rgba(63,39,22,.11)
+}
+.exhibit-card{display:flex;flex-direction:column}
+.exhibit-card .primary-button{margin-top:auto}
+.portrait-placeholder{
+  height:135px;display:grid;place-items:center;margin-bottom:12px;text-align:center;color:#765938;
+  border:1px dashed #a17b4d;border-radius:8px;background:linear-gradient(135deg,#d7bd8c,#f3e7cf)
+}
+.chapter{margin:18px 0;padding-left:16px;border-left:5px solid var(--gold)}
+.timeline{position:relative;margin:25px 0;padding-left:28px}
+.timeline:before{content:"";position:absolute;left:8px;top:0;bottom:0;width:3px;background:#9c7448}
+.timeline-item{
+  position:relative;display:grid;gap:5px;margin:0 0 20px;padding:12px 15px;
+  border:1px solid #b18a58;border-radius:8px;background:#f0dfbc
+}
+.timeline-item:before{
+  content:"";position:absolute;left:-27px;top:18px;width:13px;height:13px;
+  border:2px solid #f0dfbc;border-radius:50%;background:#7d4a2b
+}
+.empty-exhibit{margin-top:18px;padding:18px;border:2px dashed #b38b58;border-radius:9px;background:rgba(255,255,255,.28)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery-frame{
+  aspect-ratio:4/3;display:grid;place-items:center;padding:12px;color:#77583a;
+  border:8px solid #5a3925;background:#e7d2a8;box-shadow:inset 0 0 0 3px #b88a49
+}
+.memorial-panel{background:linear-gradient(rgba(250,248,232,.95),rgba(226,229,210,.94))}
+.exhibit-portrait{
+  min-height:240px;display:grid;place-items:center;margin:18px 0;border:8px solid #5a3925;
+  background:#e7d2a8;color:#77583a;box-shadow:inset 0 0 0 3px #b88a49
+}
+.exhibit-columns{display:grid;grid-template-columns:1fr 300px;gap:22px}
+.exhibit-columns aside{padding:18px;border:1px solid #b18a58;border-radius:10px;background:#f0dfbc}
+.search-overlay{
+  position:fixed;inset:0;z-index:50;display:none;place-items:start center;padding:90px 16px 20px;
+  background:rgba(25,15,10,.72)
+}
+.search-overlay.open{display:grid}
+.search-dialog{
+  width:min(720px,100%);max-height:78vh;overflow:auto;padding:18px;border:2px solid var(--gold);
+  border-radius:14px;background:#f4e6c7;box-shadow:0 20px 50px rgba(0,0,0,.45)
+}
+.search-heading{display:flex;justify-content:space-between;align-items:center}
+.close-search{border:0;background:transparent;font-size:2rem;cursor:pointer}
+#museumSearch{width:100%;padding:13px 14px;border:1px solid #9b7447;border-radius:999px;background:#fffaf0}
+.search-results{display:grid;gap:8px;margin-top:14px}
+.search-result{
+  display:flex;justify-content:space-between;gap:12px;padding:12px 14px;text-align:left;
+  border:1px solid #b18a58;border-radius:9px;background:#fff6e2;cursor:pointer
+}
+.search-result span{font-size:.88rem;color:#705334}
+.museum-footer{padding:13px 16px;text-align:center;color:#eadbbd;background:#332014;border-top:3px solid var(--gold)}
+@media(max-width:950px){
+  .museum-layout{grid-template-columns:1fr}
+  .museum-nav{
+    position:fixed;inset:78px auto 0 0;z-index:30;width:min(82vw,320px);
+    transform:translateX(-105%);transition:.25s ease;border-right:4px solid var(--gold)
+  }
+  .museum-nav.open{transform:translateX(0)}
+  .hero-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){.exhibit-columns{grid-template-columns:1fr}}
+@media(max-width:700px){
+  .museum-main{padding:12px}
+  .museum-map,.museum-stats,.person-grid,.artifact-grid,.research-grid,.gallery-grid{grid-template-columns:1fr}
+  .museum-header h1{font-size:1.55rem}
+  .museum-header .eyebrow{display:none}
+  .redwood-wrap{min-height:390px}
+}
+</style>
+</head>
+<body>
+<div class="site-shell">
+<header class="museum-header">
+  <button id="menuButton" class="icon-button" aria-label="Open museum navigation">☰</button>
+  <div><p class="eyebrow">A Living Family Museum</p><h1>This Is What Happened</h1></div>
+  <div class="header-actions">
+    <button id="searchButton" class="icon-button" aria-label="Search the museum">⌕</button>
+    <button id="homeButton" class="icon-button" aria-label="Return to entrance hall">⌂</button>
+  </div>
+</header>
+
+<div class="museum-layout">
+<aside id="museumNav" class="museum-nav">
+  <button class="nav-link active" data-room="entrance">🏛 Entrance Hall</button>
+  <button class="nav-link" data-room="redwood">🌲 Living Redwood</button>
+  <button class="nav-link" data-room="family">👨‍👩‍👧 Our Family</button>
+  <button class="nav-link" data-room="stories">📖 Story Hall</button>
+  <button class="nav-link" data-room="timeline">📜 Timeline Hall</button>
+  <button class="nav-link" data-room="migration">🗺 Migration Hall</button>
+  <button class="nav-link" data-room="gallery">🖼 Gallery</button>
+  <button class="nav-link" data-room="artifacts">🏺 Artifact Hall</button>
+  <button class="nav-link" data-room="memorial">❤️ Memorial Garden</button>
+  <button class="nav-link" data-room="research">🔍 Research Center</button>
+  <button class="nav-link" data-room="legacy">🌍 Legacy Room</button>
+</aside>
+
+<main class="museum-main">
+<section id="entrance" class="room active-room">
+  <div class="hero-grid">
+    <article class="paper-panel">
+      <p class="eyebrow dark">Welcome</p>
+      <h2>Every family leaves behind more than names and dates.</h2>
+      <p>They leave stories, photographs, traditions, hardships, laughter, places, objects, and memories. This museum preserves those gifts for future generations.</p>
+      <p><strong>Begin at the center—with the living family—and allow the redwood to grow outward one verified generation at a time.</strong></p>
+      <div class="button-row">
+        <button class="primary-button" data-go="redwood">Enter through the Living Redwood</button>
+        <button class="secondary-button" data-go="family">Meet the Living Family</button>
+      </div>
+    </article>
+    <article class="paper-panel">
+      <p class="eyebrow dark">Museum Map</p>
+      <div class="museum-map">
+        <button class="map-card" data-go="stories"><span>📖</span><strong>Story Hall</strong><small>Lives told as chapters</small></button>
+        <button class="map-card" data-go="timeline"><span>📜</span><strong>Timeline Hall</strong><small>Family beside history</small></button>
+        <button class="map-card" data-go="gallery"><span>🖼</span><strong>Gallery</strong><small>Photos, letters, heirlooms</small></button>
+        <button class="map-card" data-go="migration"><span>🗺</span><strong>Migration Hall</strong><small>Where the family moved</small></button>
+        <button class="map-card" data-go="memorial"><span>❤️</span><strong>Memorial Garden</strong><small>Legacy and remembrance</small></button>
+        <button class="map-card" data-go="research"><span>🔍</span><strong>Research Center</strong><small>Questions and evidence</small></button>
+      </div>
+    </article>
+  </div>
+  <div class="museum-stats">
+    <div><strong>4</strong><span>Family Wings</span></div>
+    <div><strong>11</strong><span>Museum Rooms</span></div>
+    <div><strong>3</strong><span>Living Exhibits Ready</span></div>
+    <div><strong>$0</strong><span>Required Monthly Cost</span></div>
+  </div>
+</section>
+
+<section id="redwood" class="room"><article class="paper-panel">
+  <p class="eyebrow dark">The Living Redwood</p><h2>The museum grows from the present generation outward.</h2>
+  <p class="lead">Each ring represents another generation. Each branch leads to one of the four family wings.</p>
+  <div class="redwood-wrap"><div class="redwood-disc">
+    <span class="branch branch-top">Zahner</span><span class="branch branch-right">Downing</span>
+    <span class="branch branch-bottom">Blackwell</span><span class="branch branch-left">Barrett</span>
+    <button class="redwood-center" data-go="family">You<br>Husband<br>Children</button>
+  </div></div>
+</article></section>
+
+<section id="family" class="room"><article class="paper-panel">
+  <p class="eyebrow dark">First Exhibits</p><h2>Our Family</h2>
+  <p class="lead">The museum begins with the living generation. These exhibit cards are ready to be replaced with real names, stories, and photographs.</p>
+  <div id="familyExhibits" class="person-grid"></div>
+</article></section>
+
+<section id="exhibit" class="room"><article class="paper-panel">
+  <button id="backToFamily" class="secondary-button">← Back to Our Family</button>
+  <div id="exhibitContent"></div>
+</article></section>
+
+<section id="stories" class="room"><article class="paper-panel">
+  <p class="eyebrow dark">Story Hall</p><h2>Story before statistics.</h2>
+  <div class="chapter"><h3>Chapter One — Early Life</h3><p>Birthplace, childhood, family surroundings, community, and the world into which the person was born.</p></div>
+  <div class="chapter"><h3>Chapter Two — Becoming</h3><p>Education, work, relationships, turning points, hardships, and joys.</p></div>
+  <div class="chapter"><h3>Chapter Three — Legacy</h3><p>What the person built, taught, loved, endured, and passed forward.</p></div>
+</article></section>
+
+<section id="timeline" class="room"><article class="paper-panel">
+  <p class="eyebrow dark">Timeline Hall</p><h2>One life, shown in context.</h2>
+  <div class="timeline">
+    <div class="timeline-item"><strong>Family Event</strong><span>Births, marriages, moves, work, military service, losses, and milestones.</span></div>
+    <div class="timeline-item"><strong>Local Context</strong><span>What was happening in the town, county, or region at the same time.</span></div>
+    <div class="timeline-item"><strong>World Context</strong><span>Wars, inventions, economic change, epidemics, weather, and major historical events.</span></div>
+  </div>
+</article></section>
+
+<section id="migration" class="room"><article class="paper-panel">
+  <p class="eyebrow dark">Migration Hall</p><h2>Follow the family across place and time.</h2>
+  <p class="lead">This room will trace movement between homes, towns, states, and countries.</p>
+  <div class="empty-exhibit">Map installation point — locations will appear here as they are verified.</div>
+</article></section>
+
+<section id="gallery" class="room"><article class="paper-panel">
+  <p class="eyebrow dark">Gallery</p><h2>Images deserve to be displayed, not merely stored.</h2>
+  <div class="gallery-grid">
+    <div class="gallery-frame">Portraits</div><div class="gallery-frame">Family Photographs</div>
+    <div class="gallery-frame">Letters & Albums</div><div class="gallery-frame">Recipes</div>
+    <div class="gallery-frame">Newspaper Clippings</div><div class="gallery-frame">Video & Audio</div>
+  </div>
+</article></section>
+
+<section id="artifacts" class="room"><article class="paper-panel">
+  <p class="eyebrow dark">Artifact Hall</p><h2>Every object receives a story and a permanent archive reference.</h2>
+  <div class="artifact-grid">
+    <div class="artifact-card"><strong>Documents</strong><p>Birth, marriage, census, military, land, school, church, and legal records.</p></div>
+    <div class="artifact-card"><strong>Heirlooms</strong><p>Jewelry, quilts, Bibles, tools, furniture, clothing, and keepsakes.</p></div>
+    <div class="artifact-card"><strong>Memories</strong><p>Oral histories, recipes, family sayings, traditions, and personal accounts.</p></div>
+  </div>
+</article></section>
+
+<section id="memorial" class="room"><article class="paper-panel memorial-panel">
+  <p class="eyebrow dark">Memorial Garden</p><h2>A quiet place for remembrance.</h2>
+  <p class="lead">Photographs, memories, cemetery information, obituaries, favorite sayings, and family legacy will be preserved here with care.</p>
+  <div class="empty-exhibit">Memorial exhibits will be created respectfully as people and evidence are installed.</div>
+</article></section>
+
+<section id="research" class="room"><article class="paper-panel">
+  <p class="eyebrow dark">Research Center</p><h2>The museum shows what is known—and what is still being discovered.</h2>
+  <div class="research-grid">
+    <div class="research-card"><strong>People to Add</strong><p>Begin with you, your husband, and your children.</p></div>
+    <div class="research-card"><strong>Missing Evidence</strong><p>Records needed before a claim is treated as verified.</p></div>
+    <div class="research-card"><strong>Open Questions</strong><p>Family mysteries, conflicting records, DNA leads, and next steps.</p></div>
+  </div>
+</article></section>
+
+<section id="legacy" class="room"><article class="paper-panel">
+  <p class="eyebrow dark">Legacy Room</p><h2>Preserve the voices of the living.</h2>
+  <p class="lead">Family members can contribute letters to future generations, advice, recipes, traditions, recordings, and stories in their own words.</p>
+  <div class="empty-exhibit">The first legacy collection will begin with your immediate family.</div>
+</article></section>
+</main>
+</div>
+
+<footer class="museum-footer">This Is What Happened — Single-file GitHub Edition</footer>
+</div>
+
+<div id="searchOverlay" class="search-overlay" aria-hidden="true">
+  <div class="search-dialog">
+    <div class="search-heading"><h2>Search the Museum</h2><button id="closeSearch" class="close-search">×</button></div>
+    <input id="museumSearch" type="search" placeholder="Search people, rooms, stories, or artifacts">
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+
+<script>
+const FAMILY=[
+ {id:"you",name:"Your Museum Room",relationship:"Museum Curator",summary:"Your life story, timeline, memories, places, photographs, documents, historical context, and narration.",
+  chapters:[["Early Life","Ready for childhood, family surroundings, schools, places, and early memories."],["Becoming","Ready for work, relationships, turning points, hardships, joys, and accomplishments."],["Legacy","Ready for the values, traditions, lessons, and memories you want future generations to inherit."]],
+  timeline:["Birth and childhood","Important turning points","Family milestones","Legacy memories"],artifacts:["Portraits","Letters","Documents","Voice recordings"]},
+ {id:"husband",name:"Your Husband's Room",relationship:"Living Family",summary:"His life story, timeline, memories, places, photographs, documents, historical context, and narration.",
+  chapters:[["Early Life","Ready for childhood, family surroundings, schools, places, and early memories."],["Becoming","Ready for work, relationships, turning points, hardships, joys, and accomplishments."],["Legacy","Ready for the values, traditions, lessons, and memories he wants future generations to inherit."]],
+  timeline:["Birth and childhood","Important turning points","Family milestones","Legacy memories"],artifacts:["Portraits","Letters","Documents","Voice recordings"]},
+ {id:"children",name:"Your Children's Rooms",relationship:"Next Generation",summary:"Living exhibits for milestones, photographs, traditions, stories, and letters to the future.",
+  chapters:[["Early Years","Ready for childhood memories, favorite places, family traditions, and milestones."],["Growing Story","Designed to expand as each life continues."],["Letters to the Future","A place for advice, hopes, family stories, and messages for later generations."]],
+  timeline:["Birth and childhood","Milestones","Family traditions","Future chapters"],artifacts:["Photographs","Artwork","Letters","Recordings"]}
+];
+
+const nav=document.getElementById("museumNav"), menuButton=document.getElementById("menuButton"), homeButton=document.getElementById("homeButton");
+const rooms=[...document.querySelectorAll(".room")], links=[...document.querySelectorAll(".nav-link")];
+function showRoom(id){rooms.forEach(r=>r.classList.toggle("active-room",r.id===id));links.forEach(l=>l.classList.toggle("active",l.dataset.room===id));nav.classList.remove("open");window.scrollTo({top:0,behavior:"smooth"})}
+links.forEach(l=>l.addEventListener("click",()=>showRoom(l.dataset.room)));
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showRoom(b.dataset.go)));
+menuButton.addEventListener("click",()=>nav.classList.toggle("open"));
+homeButton.addEventListener("click",()=>showRoom("entrance"));
+
+const familyExhibits=document.getElementById("familyExhibits"), exhibitContent=document.getElementById("exhibitContent");
+familyExhibits.innerHTML=FAMILY.map(p=>`<article class="person-card exhibit-card">
+  <div class="portrait-placeholder">${p.name.replace(" Room","").replace("Your ","")}</div>
+  <p class="eyebrow dark">${p.relationship}</p><h3>${p.name}</h3><p>${p.summary}</p>
+  <button class="primary-button open-exhibit" data-person="${p.id}">Enter Exhibit</button></article>`).join("");
+document.querySelectorAll(".open-exhibit").forEach(b=>b.addEventListener("click",()=>openExhibit(b.dataset.person)));
+function openExhibit(id){
+ const p=FAMILY.find(x=>x.id===id); if(!p)return;
+ exhibitContent.innerHTML=`<p class="eyebrow dark">${p.relationship}</p><h2>${p.name}</h2><p class="lead">${p.summary}</p>
+ <div class="exhibit-portrait">Portrait installation point</div>
+ <div class="exhibit-columns"><div>${p.chapters.map(c=>`<div class="chapter"><h3>${c[0]}</h3><p>${c[1]}</p></div>`).join("")}</div>
+ <aside><h3>Timeline</h3><ul>${p.timeline.map(x=>`<li>${x}</li>`).join("")}</ul><h3>Artifact Cases</h3><ul>${p.artifacts.map(x=>`<li>${x}</li>`).join("")}</ul></aside></div>`;
+ showRoom("exhibit");
+}
+document.getElementById("backToFamily").addEventListener("click",()=>showRoom("family"));
+
+const overlay=document.getElementById("searchOverlay"), searchButton=document.getElementById("searchButton"), closeSearch=document.getElementById("closeSearch"), input=document.getElementById("museumSearch"), results=document.getElementById("searchResults");
+const searchable=rooms.filter(r=>r.id!=="exhibit").map(r=>({id:r.id,title:r.querySelector("h2")?.textContent||r.id,text:r.textContent.replace(/\s+/g," ").trim()}));
+function openSearch(){overlay.classList.add("open");overlay.setAttribute("aria-hidden","false");input.focus();results.innerHTML="<p>Type a name, room, story, or artifact.</p>"}
+function closePanel(){overlay.classList.remove("open");overlay.setAttribute("aria-hidden","true")}
+function runSearch(q){
+ q=q.trim().toLowerCase(); if(!q){results.innerHTML="<p>Type a name, room, story, or artifact.</p>";return}
+ const people=FAMILY.filter(p=>JSON.stringify(p).toLowerCase().includes(q));
+ const roomMatches=searchable.filter(r=>r.text.toLowerCase().includes(q));
+ const html=[...people.map(p=>`<button class="search-result" data-person="${p.id}"><strong>${p.name}</strong><span>${p.relationship}</span></button>`),...roomMatches.map(r=>`<button class="search-result" data-room="${r.id}"><strong>${r.title}</strong><span>Museum room</span></button>`)];
+ results.innerHTML=html.length?html.join(""):"<p>No museum exhibits matched that search.</p>";
+ document.querySelectorAll(".search-result[data-room]").forEach(b=>b.onclick=()=>{closePanel();showRoom(b.dataset.room)});
+ document.querySelectorAll(".search-result[data-person]").forEach(b=>b.onclick=()=>{closePanel();openExhibit(b.dataset.person)});
+}
+searchButton.addEventListener("click",openSearch);closeSearch.addEventListener("click",closePanel);overlay.addEventListener("click",e=>{if(e.target===overlay)closePanel()});input.addEventListener("input",e=>runSearch(e.target.value));
+</script>
+</body>
+</html>
