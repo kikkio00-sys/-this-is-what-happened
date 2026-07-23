@@ -1,0 +1,7 @@
+Museum v3.3 repairs the mismatched phone upload:
+- New versioned stylesheet and JavaScript filenames prevent old-file caching.
+- Mobile menu is a clean vertical list.
+- Links no longer appear as blue underlined text.
+- Explore Every Generation legend stays compact in one row.
+- Entrance Hall uses the antique world map rather than a biography screenshot.
+- Gallery photographs remain inside their frames instead of overflowing.

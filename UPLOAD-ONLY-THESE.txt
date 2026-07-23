@@ -1,16 +1,8 @@
-THIS IS WHAT HAPPENED — MUSEUM v3.2 FLAT UPLOAD
+MUSEUM v3.3 PHONE FIX
 
-This release is intentionally flat for iPhone/GitHub uploads.
-There are NO css, js, or images folders.
+Upload EVERY file in this folder to the main level of the GitHub repository.
+Do not create folders.
 
-Upload every file in this folder to the TOP LEVEL of the GitHub repository.
-When GitHub asks about files with the same names, allow them to replace/overwrite the existing files.
+Important: this release uses NEW filenames museum-v33.css and museum-v33.js so GitHub and Safari cannot keep using the older mismatched files.
 
-Important:
-- index.html stays at the top level.
-- styles.css stays at the top level.
-- museum.js stays at the top level.
-- all museum-image files stay at the top level.
-- family-tree-clean.png stays at the top level.
-
-After committing, wait for GitHub Pages to redeploy and open the public site in a private Safari tab.
+After upload, wait several minutes and reopen the public website.
