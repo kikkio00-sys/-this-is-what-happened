@@ -1,0 +1,12 @@
+THIS IS WHAT HAPPENED — MUSEUM v5 POLISH
+
+• One-line museum title on every page, with iPhone safe-area spacing.
+• New scalable SVG family tree for crisp display at any size.
+• Tree center changed to PRESENT DAY.
+• Clickable family wedges and consistent family colors.
+• Documents removed from the Gallery and installed in the Archive.
+• Gallery now preserves full image proportions and does not force face-cropping.
+• Migration routes overlap at shared places and shared segments.
+• Crossing counter and selectable crossing markers added.
+• Migration data is explicitly limited to stops currently installed in the museum; add verified stops as research grows.
+• Single-entry discovery system retained: photos go to Gallery; documents/artifacts go to Archive; uncertain items and stories go to Research; family/person/date connections appear in those exhibits too.

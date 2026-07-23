@@ -1,4 +1,1 @@
-UPLOAD EVERY FILE IN THIS FOLDER TO THE TOP LEVEL OF THE GITHUB REPOSITORY.
-
-This is a flat iPhone-friendly release. Do not upload the ZIP itself.
-The new index.html points to museum-v42.css and museum-v42.js.
+Upload EVERY file in this folder to the TOP LEVEL of the GitHub repository. Replace matching names. New controlling files are museum-v5.css and museum-v5.js. Keep all image and HTML files together at the top level.
